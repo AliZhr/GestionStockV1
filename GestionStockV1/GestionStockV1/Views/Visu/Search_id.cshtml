@@ -1,0 +1,80 @@
+﻿
+@model X.PagedList.IPagedList<GestionStockV1.Models.Article>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@{
+    ViewData["Title"] = "Liste";
+}
+
+<h1>Liste des articles</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nom
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Seuil de sécurité
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleSeuilSecurite)
+            </td>
+            <td>
+
+                @Html.ActionLink("Modifier", "Edit", new { num = item.ArticleId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Supprimer", "Supprime", new { nums = item.ArticleId }, new { @class = "btn btn-warning" })
+
+
+            </td>
+        </tr>
+        }
+
+        <form asp-action="Liste">
+            <div class="form-group">
+                <input type="submit" value="Retour à la liste" class="btn btn-outline-dark" />
+            </div>
+        </form>
+
+    </tbody>
+</table>
+
+<div id="container" style="margin-left: 20px">
+    <p></p>
+    <p></p>
+
+    Page: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Search_id", new { page }), new PagedListRenderOptions
+{
+DisplayLinkToIndividualPages = true,
+DisplayPageCountAndCurrentLocation = false,
+MaximumPageNumbersToDisplay = 10,
+LiElementClasses = new string[] { "page-item" },
+PageClasses = new string[] { "page-link" },
+
+})
+</div>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "preCreate";
+}
+
+<h1>Ajout d'articles</h1>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <label for="nbr">Nombre d'articles (1-100):</label>
+
+            <input type="number" id="nbr" name="nbr"
+                   min="1" max="100">
+            <br /> 
+            @Html.ActionLink("+ 5", "Add5", new { }, new { @class = "btn btn-success" })
+            @Html.ActionLink("- 5", "Sub5", new { }, new { @class = "btn btn-danger" })
+
+            <br /> <br /> 
+            @Html.ActionLink("Créer", "Create", new { }, new { @class = "btn btn-outline-success" })
+            @Html.ActionLink("Annuler", "Liste", new { }, new { @class = "btn btn-outline-danger" })
+        </form>
+
+
+
+    </div>
+</div>
+

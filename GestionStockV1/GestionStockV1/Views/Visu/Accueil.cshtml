@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<h1>Accueil</h1>
+<br /><br />
+          <div align="left" class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h4 class="card-title">Création d'articles</h4>
+                  <p class="card-text">Ajouter un ou plusieurs articles</p>
+                  <form asp-action="preCreate">
+                      <div class="form-group">
+                          <input type="submit" value="Ajouter des articles" class="btn btn-outline-primary" />
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+          <div align="left" class="card" style="width: 18rem;">
+              <div class="card-body">
+                  <h4 class="card-title">Afficher la liste d'articles</h4>
+                  <p class="card-text">Liste des articles</p>
+                  <form asp-action="Liste">
+                      <div class="form-group">
+                          <input type="submit" value="Afficher la liste" class="btn btn-outline-primary" />
+                      </div>
+                  </form>
+              </div>
+          </div>
+
+
+
